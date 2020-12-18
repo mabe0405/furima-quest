@@ -18,6 +18,9 @@
 
 - has_many :items
 - has_many :purchases
+- has_one :fgem
+- has_one :coin
+- has_one :status
 
 ## items テーブル
 
@@ -68,3 +71,71 @@
 ### Association
 
 - belongs_to :purchase
+
+## fgems テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| fgem   | integer    | null: false                    |
+| user   | references | null: false, foreign_key: true |
+
+
+### Association
+
+- belongs_to :user
+
+## coins テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| coin   | integer    | null: false                    |
+| user   | references | null: false, foreign_key: true |
+
+
+### Association
+
+- belongs_to :user
+
+## abilities テーブル
+
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| hp            | integer    | null: false                    |
+| mp            | integer    | null: false                    |
+| attack        | integer    | null: false                    |
+| defense       | integer    | null: false                    |
+| speed         | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
+
+
+### Association
+
+- belongs_to :user
+- belongs_to :weapon
+- belongs_to :shield
+
+## weapons テーブル (ActiveHash)
+
+| Column | Type       | Options     |
+| ------ | ---------- | ----------- |
+| name   | integer    | null: false |
+| attack | integer    | null: false |
+| price  | integer    | null: false |
+
+
+### Association
+
+- has_many :abilities
+
+## shields テーブル (ActiveHash)
+
+| Column  | Type       | Options     |
+| ------  | ---------- | ----------- |
+| name    | integer    | null: false |
+| defense | integer    | null: false |
+| price   | integer    | null: false |
+
+
+### Association
+
+- has_many :abilities
