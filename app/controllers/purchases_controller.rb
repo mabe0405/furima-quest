@@ -10,6 +10,14 @@ class PurchasesController < ApplicationController
   end
 
   def create
+    initial_setting_item_user
+    @item.user.fgem.gem += @item.price / 100
+    @item.user.fgem.save
+
+    initial_setting_purchase_user
+    current_user.fgem.gem += @item.price / 100
+    current_user.fgem.save
+
     @purchase_address = PurchaseAddress.new(purchase_params)
     if @purchase_address.valid?
       pay_item
@@ -38,4 +46,29 @@ class PurchasesController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  def initial_setting_item_user
+		unless @item.user.ability.present?
+			Ability.create(hp:10, mp:10, speed:10, weapon_id:0, shield_id:0,user_id: @item.user.id)
+		end
+		unless @item.user.fgem.present?
+			Fgem.create(gem: 0,user_id: @item.user.id)
+		end
+		unless @item.user.coin.present?
+			Coin.create(coin: 0,user_id: @item.user.id)
+		end
+  end
+  
+  def initial_setting_purchase_user
+		unless current_user.ability.present?
+			Ability.create(hp:10, mp:10, speed:10, weapon_id:0, shield_id:0,user_id: cuurent_user)
+		end
+		unless current_user.fgem.present?
+			Fgem.create(gem: 0,user_id: @item.user.id)
+		end
+		unless current_user.coin.present?
+			Coin.create(coin: 0,user_id: @item.user.id)
+		end
+  end
+
 end
