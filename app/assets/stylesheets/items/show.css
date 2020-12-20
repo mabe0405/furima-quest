@@ -49,6 +49,10 @@
   font-size: 16px;
 }
 
+.item-price-box>.get-gem {
+  font-size: 20px;
+}
+
 
 .item-red-btn {
   text-align: center;

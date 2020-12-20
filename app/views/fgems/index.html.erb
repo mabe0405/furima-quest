@@ -1,0 +1,20 @@
+<%= render "shared/header" %>
+<%= render "shared/status" %>
+ジェムジェムショップへようこそ
+<span><%= link_to "クエスト一覧へ戻る", user_path(current_user.id)%>
+<div><%= link_to "HPアップ" , user_hpup_path(current_user.id)%></div>
+<div class="weapon">
+	<% @weapons.each do |weapon| %>
+		<%= link_to user_wchange_path(current_user.id,weapon_id:weapon.id) do%>
+			<%= weapon.name%>
+		<%end%>
+	<% end %>
+</div>
+<div class="shield">
+	<% @shields.each do |shield| %>
+		<%= link_to user_schange_path(current_user.id,shield_id:shield.id) do%>
+			<%= shield.name%>
+		<%end%>
+	<% end %>
+</div>
+<%= render "shared/footer" %>
