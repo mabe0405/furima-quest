@@ -8,6 +8,6 @@ class Shield < ActiveHash::Base
 
 	include ActiveHash::Associations
 
-	has_many: abilties
+	has_many :abilities
 
 end

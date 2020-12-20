@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :purchases
+  has_one :ability
+  has_one :fgem
+  has_one :coin
 
   with_options presence: true do
     validates :nickname
