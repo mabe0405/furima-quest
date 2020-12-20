@@ -1,0 +1,18 @@
+<div class="status">
+	<ul>
+		<li class="status-index">ステータス</li>
+		<li class="status-name">名前　：勇者<%= current_user.nickname %></li>
+		<li class="status-hp">ＨＰ　：<%= current_user.ability.hp %></li>
+		<li class="status-mp">ＭＰ　：<%= current_user.ability.mp %></li>
+		<li class="status-attack">攻撃力：<%= current_user.ability.weapon.attack %> (<%= current_user.ability.weapon.name %>)</li>
+		<li class="status-shield">防御力：<%= current_user.ability.shield.defense %> (<%= current_user.ability.shield.name %>)</li>
+		<li class="status-speed">素早さ：<%= current_user.ability.speed %></li>
+	</ul>
+</div>
+<div class="gem">
+	<span>保有ジェム：<%= current_user.fgem.gem%></span>
+	<span><%= link_to "ジェムショップへ" , user_fgems_path(current_user.id)%></span>
+</div>
+<div class="coin">
+	<span>保有コイン：<%= current_user.coin.coin%></span>
+</div>
