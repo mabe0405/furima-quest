@@ -1,18 +1,32 @@
-<div class="status">
-	<ul>
-		<li class="status-index">ステータス</li>
-		<li class="status-name">名前　：勇者<%= current_user.nickname %></li>
-		<li class="status-hp">ＨＰ　：<%= current_user.ability.hp %></li>
-		<li class="status-mp">ＭＰ　：<%= current_user.ability.mp %></li>
-		<li class="status-attack">攻撃力：<%= current_user.ability.weapon.attack %> (<%= current_user.ability.weapon.name %>)</li>
-		<li class="status-shield">防御力：<%= current_user.ability.shield.defense %> (<%= current_user.ability.shield.name %>)</li>
-		<li class="status-speed">素早さ：<%= current_user.ability.speed %></li>
-	</ul>
+<%if current_user.ability.present?%>
+<div class="status-window">
+	<div class="status">
+		<div class="status-upper">
+			<div class="status-upper-left">
+				<img id="char_img" src="/assets/char_1_1.png" width="43" height="43">
+				<div class="status-name">勇者<%= current_user.nickname %></div>
+			</div>
+			<div class="status-upper-right">
+				<div class="status-hp" id="status-window-hp">ＨＰ　：<%= current_user.ability.hp %></div>
+				<div class="status-mp" id="status-window-mp">ＭＰ　：<%= current_user.ability.mp %></div>
+				<div class="status-speed" id="status-window-sp">素早さ：<%= current_user.ability.speed %></div>
+			</div>
+		</div>
+		<div class="status-middle">
+			<div class="status-attack" id="status-window-weapon">武器：<%= current_user.ability.weapon.name %>　(攻撃力：<%= current_user.ability.weapon.attack %>) </div>
+			<div class="status-shield" id="status-window-shield">盾　：<%= current_user.ability.shield.name %>　(防御力：<%= current_user.ability.shield.defense %>） </div>
+		</div>
+		<div class="status-skill" id="status-skill">
+			<div class="status-attack" id="status-window-skill">使える呪文：</div>
+			<%@userskills.each do|userskill|%>
+			<div id="last-skill"><%= userskill.name %>　</div>
+			<%end%>
+		</div>
+			<div class="gem">
+				<span id="status-window-gem">保有ジェム：<%= current_user.fgem.gem%></span>
+				<span class="gemshop-link"><%= link_to "ジェムショップへ" , user_fgems_path(current_user.id)%></span>
+			</div>
+	</div>
+
 </div>
-<div class="gem">
-	<span>保有ジェム：<%= current_user.fgem.gem%></span>
-	<span><%= link_to "ジェムショップへ" , user_fgems_path(current_user.id)%></span>
-</div>
-<div class="coin">
-	<span>保有コイン：<%= current_user.coin.coin%></span>
-</div>
+<%end%>

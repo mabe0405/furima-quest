@@ -1,6 +1,6 @@
 class PurchaseAddress
   include ActiveModel::Model
-  attr_accessor :price,:user_id, :item_id, :token, :postal_code, :prefecture_id, :city, :address, :building, :phone_number
+  attr_accessor :price,:user_id, :item_id, :token, :postal_code, :prefecture_id, :city, :address, :building, :phone_number, :coin
 
   with_options presence: true do
     validates :token
@@ -14,8 +14,12 @@ class PurchaseAddress
     validates :phone_number, length: { maximum:11 }
   end
 
+  validates :coin, numericality: { only_integer: true, message: 'Input only number' }
+  # validates :coin, numericality: { less_than_or_equal_to: current_user.coin.coin , message: 'Input less than your coin' }
+
   def save
     purchase = Purchase.create(user_id: user_id, item_id: item_id)
     Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building: building, phone_number: phone_number, purchase_id: purchase.id)
   end
+
 end

@@ -1,3 +1,87 @@
-// Place all the styles related to the fgems controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.fgem-wrapper{
+	margin:0 70px 70px 70px;
+}
+
+.fgem-top{
+	display:flex;
+	margin:20px 20px 70px 20px;
+}
+.gem-img{
+	margin-right:20px;
+}
+
+.fgem-top h1{
+	font-size:40px;
+}
+
+//小見出し　共通/////////////////
+.fgem-menu {
+	margin-bottom:40px;
+}
+
+.fgem-tittle {
+	font-size:30px;
+	text-align: center;
+	border-bottom:1px solid gray;
+}
+///////////////////////////////
+
+.statusup {
+	margin:20px;
+}
+
+.btn {
+
+}
+
+.btn:hover{
+	opacity: 0.8;
+}
+
+.btn:active{
+	position:relative;
+	top: 1px;
+	left:1px;
+}
+
+.fgem-weapon-tittle{
+	margin:20px;
+	font-size:30px
+}
+
+.fgem-weapon-lists{
+	display: flex;
+	justify-content: space-around;
+}
+
+.fgem-shield-tittle{
+	margin:20px;
+	font-size:30px
+}
+
+.fgem-shield-lists{
+	display: flex;
+	justify-content: space-around;
+}
+
+.fgem-skill-lists{
+	display: flex;
+	justify-content: space-around;
+	margin:20px;
+}
+
+// color:white;
+// box-shadow:3px 3px rgba(0,0,0,0.5);
+// border:solid 1px black;
+// }
+
+// .contents-wrapper-lower a:hover{
+//  background-color: rgb(21, 120, 167);
+// }
+
+// .contents-wrapper-lower a:active{
+//  position:relative;
+//  top: 3px;
+//  left:3px;
+//  box-shadow:none;
+// }

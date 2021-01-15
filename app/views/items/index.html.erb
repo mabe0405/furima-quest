@@ -181,4 +181,12 @@
   <span class='purchase-btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
+
+<% if user_signed_in? %>
+<%= link_to(user_path(current_user.id), class: 'quest-btn') do %>
+  <span class='quest-btn-text'>冒険する</span>
+  <%= image_tag 'icon_quest.png' , size: '185x50' ,class: "quest-btn-icon" %>
+<% end %>
+<%end%>
+
 <%= render "shared/footer" %>

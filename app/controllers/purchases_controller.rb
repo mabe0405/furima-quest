@@ -3,6 +3,8 @@ class PurchasesController < ApplicationController
   before_action :set_item
 
   def index
+    gon.userCoin = current_user.coin.coin
+    gon.itemPrice = @item.price
     if @item.user == current_user || @item.purchase.present?
       redirect_to root_path
     end
@@ -10,17 +12,24 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    initial_setting_item_user
+    # initial_setting_item_user
     @item.user.fgem.gem += @item.price / 100
     @item.user.fgem.save
 
-    initial_setting_purchase_user
+    # initial_setting_purchase_user
     current_user.fgem.gem += @item.price / 100
     current_user.fgem.save
 
     @purchase_address = PurchaseAddress.new(purchase_params)
     if @purchase_address.valid?
       pay_item
+      if current_user.coin.coin >= @purchase_address.coin.to_i
+         current_user.coin.coin -= @purchase_address.coin.to_i
+         Coin.find_by(user_id:current_user.id).update(coin:current_user.coin.coin)
+      else 
+        render action: :index
+        return
+      end
       @purchase_address.save
       redirect_to root_path
     else
@@ -34,8 +43,12 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
+  def coin_params
+    params.require(:coin).permit(:coin)
+  end
+
   def purchase_params
-    params.require(:purchase_address).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], price: @item.price, token: params[:token])
+    params.require(:purchase_address).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number, :coin).merge(user_id: current_user.id, item_id: params[:item_id], price: @item.price, token: params[:token])
   end
 
   def pay_item
@@ -47,28 +60,28 @@ class PurchasesController < ApplicationController
     )
   end
 
-  def initial_setting_item_user
-		unless @item.user.ability.present?
-			Ability.create(hp:10, mp:10, speed:10, weapon_id:0, shield_id:0,user_id: @item.user.id)
-		end
-		unless @item.user.fgem.present?
-			Fgem.create(gem: 0,user_id: @item.user.id)
-		end
-		unless @item.user.coin.present?
-			Coin.create(coin: 0,user_id: @item.user.id)
-		end
-  end
+  # def initial_setting_item_user
+	# 	unless @item.user.ability.present?
+	# 		Ability.create(hp:10, mp:10, speed:10, weapon_id:0, shield_id:0,user_id: @item.user.id)
+	# 	end
+	# 	unless @item.user.fgem.present?
+	# 		Fgem.create(gem: 0,user_id: @item.user.id)
+	# 	end
+	# 	unless @item.user.coin.present?
+	# 		Coin.create(coin: 0,user_id: @item.user.id)
+	# 	end
+  # end
   
-  def initial_setting_purchase_user
-		unless current_user.ability.present?
-			Ability.create(hp:10, mp:10, speed:10, weapon_id:0, shield_id:0,user_id: cuurent_user)
-		end
-		unless current_user.fgem.present?
-			Fgem.create(gem: 0,user_id: @item.user.id)
-		end
-		unless current_user.coin.present?
-			Coin.create(coin: 0,user_id: @item.user.id)
-		end
-  end
+  # def initial_setting_purchase_user
+	# 	unless current_user.ability.present?
+	# 		Ability.create(hp:10, mp:10, speed:10, weapon_id:0, shield_id:0,user_id: cuurent_user)
+	# 	end
+	# 	unless current_user.fgem.present?
+	# 		Fgem.create(gem: 0,user_id: @item.user.id)
+	# 	end
+	# 	unless current_user.coin.present?
+	# 		Coin.create(coin: 0,user_id: @item.user.id)
+	# 	end
+  # end
 
 end

@@ -1,3 +1,118 @@
-// Place all the styles related to the user controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// トップ画像
+
+.quest-top {
+  width: 100vw;
+  background-image: image-url('back_quest.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5vh 15vw;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+}
+
+.quest-top-title {
+	font-size: 8vh;
+
+}
+
+.quest-top-explain {
+  font-size: 2.5vh;
+	line-height: 40px;
+
+}
+
+// トップ画像
+
+.quest-wrapper{
+	margin:0 70px 0 70px;
+}
+
+.quest-index{
+	text-align: center;
+	font-size: 30px;
+
+	border-bottom:1px solid gray;
+}
+
+
+// モンスター一覧
+.quests{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.quest {
+	border:1px solid black;
+	margin:10px;
+	padding:10px;
+	border-radius: 10px;
+	width:325px;
+	height:250px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	background-image:url("/assets/wanted.jpg");
+	background-size:contain;
+}
+
+.monster-img-name{
+	display:flex;
+	justify-content: top;
+	align-items:center;
+	flex-direction: column;
+}
+
+.monster-img-name{
+	color:rgb(31, 1, 1);
+	font-size:20px;
+	font-weight: bold;
+}
+
+
+// モンスター一覧
+
+//ステータスウインドウ
+.status-window{
+	width:350px;
+	color:white;
+	background-color: black;
+	border:6px solid rgb(173, 173, 173);
+	border-radius: 5px;
+	bottom: 32px;
+  right: 32px;
+  position: fixed;
+}
+
+.status{
+	padding:10px;
+}
+
+.status-upper{
+	display:flex;
+	margin-bottom:10px;
+}
+
+.status-upper-left{
+	margin-right:30px;
+}
+
+.status-middle{
+	margin-bottom:10px;
+}
+
+.status-skill{
+	display: flex;
+	margin-bottom:10px;
+	flex-wrap: wrap;
+}
+
+.gemshop-link a{
+	color:rgb(255, 0, 149);
+	border-bottom:1px solid rgb(255, 0, 149);
+}
+//

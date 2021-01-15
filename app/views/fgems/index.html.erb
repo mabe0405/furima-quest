@@ -1,20 +1,89 @@
+
+
 <%= render "shared/header" %>
 <%= render "shared/status" %>
-ジェムジェムショップへようこそ
-<span><%= link_to "クエスト一覧へ戻る", user_path(current_user.id)%>
-<div><%= link_to "HPアップ" , user_hpup_path(current_user.id)%></div>
-<div class="weapon">
-	<% @weapons.each do |weapon| %>
-		<%= link_to user_wchange_path(current_user.id,weapon_id:weapon.id) do%>
-			<%= weapon.name%>
-		<%end%>
-	<% end %>
+
+<div class="fgem-wrapper">
+	<div class="fgem-top">
+		<img class="gem-img" src="/assets/gem.png" width=50 height=50>
+		<h1>ジェム SHOP</h1>
+	</div>
+	<div class="fgem-menu status">
+		<div class="fgem-tittle status"> ステータスアップ</div>
+				<div class="statusup hp">
+					<div>ジェムを１つ消費して、HPを１上昇させます。</div>
+					<a href="/users/<%=current_user.id%>/hpup"  id="status-up-hp" user-id= <%=current_user.id%> >
+					<img class="btn hpup" src="/assets/btn_hp.png" >
+					</a>
+				</div>
+				<div class="statusup mp">
+					<div>ジェムを１つ消費して、MPを１上昇させます。</div>
+					<a href="/users/<%=current_user.id%>/mpup"  id="status-up-mp" user-id= <%=current_user.id%> >
+						<img class="btn mpup" src="/assets/btn_mp.png">
+					</a>
+				</div>
+				<div class="statusup sp">
+					<div>ジェムを１つ消費して、すばやさを１上昇させます。</div>
+					<a href="/users/<%=current_user.id%>/spup"  id="status-up-sp" user-id= <%=current_user.id%> >
+					<img class="btn spup" src="/assets/btn_sp.png">
+					</a>
+				</div>
+	</div>
+	<div class="fgem-menu equip" id="equip-user-id" user-id=<%=current_user.id%>>
+		<div class="fgem-tittle status"> 装備購入</div>
+		<div class="fgem-weapon">
+			<div class="fgem-weapon-tittle"> 武器</div>
+			<div class="fgem-weapon-lists">
+				<% @weapons.each do |weapon| %>
+					<% if weapon.id != 0%>
+						<div>
+							<a href="/users/<%=current_user.id%>/wchange?weapon_id=<%=weapon.id%>" class="fgem-weapon-list" user-id=<%=current_user.id%> weapon-id=<%=weapon.id%> weapon-name=<%=weapon.name%> weapon-attack=<%=weapon.attack%> weapon-price=<%=weapon.price%>>
+								<img src="<%= weapon.img%>" width=100 height=100>
+								<div><%= weapon.name%></div>
+								<div>攻撃力：<%=weapon.attack%></div>
+								<div>消費ジェム：<%=weapon.price%></div>
+							</a>
+						</div>
+					<%end%>
+				<% end %>
+			</div>
+		</div>
+		<div class="fgem-shield">
+			<div class="fgem-shield-tittle"> 防具</div>
+			<div class="fgem-shield-lists">
+				<% @shields.each do |shield| %>
+					<% if shield.id != 0%>
+						<div>
+							<a href="/users/<%=current_user.id%>/schange?shield_id=<%=shield.id%>" class="fgem-shield-list" user-id=<%=current_user.id%> shield-id=<%=shield.id%> shield-name=<%=shield.name%> shield-defense=<%=shield.defense%> shield-price=<%=shield.price%>>
+								<img src="<%= shield.img%>" width=100 height=100>
+								<div><%= shield.name%></div>
+								<div>防御力：<%=shield.defense%></div>
+								<div>消費ジェム：<%=shield.price%></div>
+							</a>
+						</div>
+					<%end%>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="fgem-menu skill" id="skill-user-id" >
+		<div class="fgem-tittle skill"> 呪文習得</div>
+		<div class="fgem-skill">
+			<div class="fgem-skill-lists">
+				<% @skills.each do |skill| %>
+					<div>
+						<a href="/users/6/skillget?skill_id=<%=skill.id%>" class="skill-list" user-id=<%=current_user.id%> skill-id=<%=skill.id%> skill-name=<%=skill.name%> skill-price=<%=skill.gem%> user-having=<%if SkillUser.where(user_id:current_user.id).where(skill_id:skill.id)==[]%>1<%else%>2<%end%>>
+							<img src="<%= skill.img%>" width=100 height=100>
+							<div><%= skill.name%></div>
+							<div>威力：<%=skill.power%></div>
+							<div>消費ジェム：<%=skill.gem%></div>
+						</a>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="shield">
-	<% @shields.each do |shield| %>
-		<%= link_to user_schange_path(current_user.id,shield_id:shield.id) do%>
-			<%= shield.name%>
-		<%end%>
-	<% end %>
-</div>
+
+
 <%= render "shared/footer" %>

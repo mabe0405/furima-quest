@@ -8,6 +8,13 @@ require("@rails/activestorage").start()
 require("channels")
 require("../calc_cost")
 require("../card")
+require("../calc_payment.js")
+require("../battle")
+require("../gemshop")
+require("../coin_error")
+require("../status_up")
+// require ("../jquery-3.5.1.min.js")
+// require ("../jquery.jrumble.1.3.min.js")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

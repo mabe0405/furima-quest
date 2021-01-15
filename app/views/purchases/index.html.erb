@@ -23,7 +23,7 @@
     <%# 支払額の表示 %>
     <div class='item-payment'>
       <h1 class='item-payment-title'>
-        支払金額
+        商品金額
       </h1>
       <p class='item-payment-price'>
         ¥<%= @item.price %>
@@ -71,7 +71,35 @@
       </div>
     </div>
     <%# /カード情報の入力 %>
-    
+
+    <%# FURIMAコインの入力 %>
+    <div class='coin-form'>
+      <h1 class='info-input-haedline'>
+        FURIMAコインの使用
+      </h1>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">商品金額</label>
+        </div>
+        <span id='purchase-price'><%=@item.price%></span>円
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text" id="coin-message">使用コイン (保有コイン：<%=current_user.coin.coin%>)</label>
+        </div>
+        <div class='input-expiration-date-wrap'>
+          <%= f.text_field :coin, class:"input-expiration-date", id:"coin"%>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">お支払い金額</label>
+        </div>
+        <span id="payment"><%=@item.price%>円</span>
+      </div>
+    </div>
+    <%# /FURIMAコインの入力 %>
+
     <%# 配送先の入力 %>
     <div class='shipping-address-form'>
       <h1 class='info-input-haedline'>

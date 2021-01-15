@@ -1,3 +1,34 @@
 <%= render "shared/header" %>
+<div class='quest-top'>
+    <h2 class='quest-top-title'>
+      モンスターを倒して
+    </h2>
+		<h2 class='quest-top-title'>
+      コインをゲットしよう！
+    </h2>
+    <p class='quest-top-explain'>
+      FURIMAはだれでもかんたんに出品・購入できる
+    </p>
+    <p class='quest-top-explain'>
+      フリマアプリです
+    </p>
+  </div>
+<div class="quest-wrapper">
 <%= render "shared/status" %>
+<div class="quest-index">クエスト一覧</div>
+	<div class="quests">
+		<% @monsters.each do |monster|%>
+			<%= link_to user_monster_path(current_user.id, monster_id:monster.id) do%> 
+					<div class="quest">
+						<div class="monster-img-name">	
+							<div class="monster-img"><img src= "<%=monster.image%>" ></div>
+							<div class="monster-name"><%= monster.name%></div>
+							<div class="monster-name">懸賞金　<%= monster.coin%>コイン</div>
+						</div>
+					</div>
+			<%end%>	 
+		<%end%>
+	</div>
+</div>
+</div>
 <%= render "shared/footer" %>

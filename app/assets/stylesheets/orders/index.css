@@ -126,6 +126,12 @@
 
 /* /カード情報の入力 */
 
+/*コイン情報 */
+.coin-error-message{
+  color:red;
+}
+/*コイン情報 */
+
 /* 配送先の入力 */
 .shipping-address-form {
   margin-top: 15px;

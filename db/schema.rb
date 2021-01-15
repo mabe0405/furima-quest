@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_18_131656) do
+ActiveRecord::Schema.define(version: 2021_01_14_101400) do
 
   create_table "abilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "hp", null: false
@@ -98,6 +98,23 @@ ActiveRecord::Schema.define(version: 2020_12_18_131656) do
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
+  create_table "skill_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "skill_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_id"], name: "index_skill_users_on_skill_id"
+    t.index ["user_id"], name: "index_skill_users_on_user_id"
+  end
+
+  create_table "skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "power", null: false
+    t.integer "object", null: false
+    t.integer "gem", null: false
+    t.string "img", null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", default: "", null: false
     t.string "email", default: "", null: false
@@ -124,4 +141,6 @@ ActiveRecord::Schema.define(version: 2020_12_18_131656) do
   add_foreign_key "items", "users"
   add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
+  add_foreign_key "skill_users", "skills"
+  add_foreign_key "skill_users", "users"
 end

@@ -1,0 +1,28 @@
+<audio id ="back-music" src="/assets/bgm_maoudamashii_8bit25.ogg" loop ></audio>
+<div class="full-page" id="user-monster" user-id=<%=current_user.id%> monster-id=<%=@monster.id %> >
+	<div id= "canvas" class="canvas">
+		<div class="battle-status">
+	 		<div id="status-name" class="text-status"><%=current_user.nickname%></div>
+	 		<div id="status-hp" class="text-status">HP:<%=current_user.ability.hp%></div>
+		</div>
+		<div class="monster">
+			<div class="monster-img"><img id="monster-image" src="<%=@monster.image%>"></div>
+		</div>
+		<div class="monster-img-bottom"></div>
+		<div class="lower">
+			<div class="command">
+				<ul>
+					<li><span id="attack-cursor" class="battle-cursor">　</span><span id='attack-command'>たたかう</span></li>
+					<li><span id="magic-cursor" class="battle-cursor">　</span><span id='magic-command'>じゅもん</span></li>
+					<li><span id="defense-cursor" class="battle-cursor">　</span><span id='defense-command'>ぼうぎょ</span></li>
+					<li><span id="escape-cursor" class="battle-cursor">　</span><span id='escape-command'>にげる</span></li>
+				</ul>
+			</div>
+			<div class="message">
+				<div id="battle-message"class="text-status"><%=@monster.name%>が現れた！！</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

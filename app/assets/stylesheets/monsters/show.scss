@@ -1,0 +1,83 @@
+.full-page{
+	background-color: black;
+	width:100vw;
+	height:100vh;
+	display:flex;
+	justify-content: center;
+}
+
+.canvas{
+	margin:20px 0 20px;
+	width:600px;
+	height:600px;
+}
+
+.battle-status{
+	width:100%;
+	height:50px;
+	display:flex;
+	justify-content:space-around;
+	border:3px solid white;
+	border-radius: 5px;
+}
+
+.monster{
+	width:100%;
+	height:250px;
+	display:flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+.monster-img-bottom{
+	width:100%;
+	height:50px;
+}
+
+.lower{
+	width:100%;
+	height:150px;
+	display:flex;
+	justify-content:space-between;
+}
+
+
+.command{
+	width:24.5%;
+	height:100%;
+	border:3px solid white;
+	border-radius: 5px;
+}
+
+.command ul{
+	width:100%;
+	height:100%;
+	padding:10px 0 10px 7px;
+	display:flex;
+	flex-direction: column;
+	justify-content:space-around;
+	color:white;
+}
+
+.command li{
+	color:white;
+}
+
+.message{
+	width:74.5%;
+	height:100%;
+	border:3px solid white;
+	border-radius: 5px;
+}
+
+.text-status{
+	color:white;
+	padding:10px;
+}
+
+.return-quest {
+	color:rgb(255, 0, 149);
+	border-bottom:1px solid rgb(255, 0, 149);
+	margin-left: 10px;
+
+}

@@ -73,3 +73,5 @@ gem 'active_hash'
 gem 'payjp'
 
 gem 'gon'
+
+gem 'jquery-rails'
