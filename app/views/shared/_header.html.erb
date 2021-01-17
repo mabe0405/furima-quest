@@ -18,7 +18,7 @@
       <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
       <% if user_signed_in? %>
         <% if current_user.coin.present?%>
-          <img src="/assets/coin.png" width="30" height="30">
+          <%= image_tag "coin.png",class:"coin-icon",width:"30" ,height:"30" %>
           <li class="user-nickname"><%= current_user.coin.coin%>コイン</li>
         <% end %>
         <li><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %></li>
