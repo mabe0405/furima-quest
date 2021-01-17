@@ -21,7 +21,7 @@
 			<%= link_to user_monster_path(current_user.id, monster_id:monster.id) do%> 
 					<div class="quest">
 						<div class="monster-img-name">	
-							<div class="monster-img"><img src= "<%=monster.image%>" ></div>
+							<div class="monster-img"><img src= "<%= monster.image%>" ></div>
 							<div class="monster-name"><%= monster.name%></div>
 							<div class="monster-name">懸賞金　<%= monster.coin%>コイン</div>
 						</div>
