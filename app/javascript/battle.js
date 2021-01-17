@@ -44,8 +44,8 @@ const bgmVictory = new Audio('/assets/bgm_funfare.mp3')
 const bgmGameOver = new Audio('/assets/bgm_gameover.mp3')
 const seUserAttack = new Audio('/assets/se_user_attack.mp3')
 const seMonsterAttack = new Audio('/assets/se_monster_attack.mp3')
-const seBeforeAttack = new Audio('/assets/se_before_attack.wav')
-const seBeforeAttack2 = new Audio('/assets/se_before_attack2.wav')
+const seBeforeAttack = new Audio('/assets/se_before_attack.mp3')
+const seBeforeAttack2 = new Audio('/assets/se_before_attack2.mp3')
 const seCoinGet = new Audio('/assets/se_coinget.mp3')
 
 
