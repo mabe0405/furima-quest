@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_one :coin
   has_many :skill_users 
   has_many :skills ,through: :skill_users
+  has_many :villain_users 
+  has_many :villains ,through: :villain_users
 
   with_options presence: true do
     validates :nickname

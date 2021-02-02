@@ -1,9 +1,9 @@
-<audio id ="back-music" src="/assets/bgm_maoudamashii_8bit25.ogg" loop ></audio>
-<div class="full-page" id="user-monster" user-id=<%=current_user.id%> monster-id=<%=@monster.id %> >
+<div class="full-page" id="user-monster" user-id=<%=current_user.id%> monster-id=<%=@monster.id %> skillhaving-1=<%if @userskills.find_by(skill_id:1).present?%> 1 <%end%> skillhaving-2=<%if @userskills.find_by(skill_id:2).present?%> 1 <%end%> skillhaving-3=<%if @userskills.find_by(skill_id:3).present?%> 1 <%end%>>
 	<div id= "canvas" class="canvas">
 		<div class="battle-status">
 	 		<div id="status-name" class="text-status"><%=current_user.nickname%></div>
 	 		<div id="status-hp" class="text-status">HP:<%=current_user.ability.hp%></div>
+			<div id="status-mp" class="text-status">MP:<%=current_user.ability.mp%></div>
 		</div>
 		<div class="monster">
 			<div class="monster-img"><img id="monster-image" src="<%=@monster.image%>"></div>

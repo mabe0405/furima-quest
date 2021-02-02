@@ -1,9 +1,11 @@
 class MonstersController < ApplicationController
 	def show
-		@monster = Monster.find(params[:monster_id])
+		@monster = Villain.find(params[:monster_id])
+		@userskills = SkillUser.where(user_id:current_user)
 		
 		gon.userName = current_user.nickname
 		gon.userHp = current_user.ability.hp
+		gon.userMp = current_user.ability.mp
 		gon.userSpeed = current_user.ability.speed
 		gon.userAttack = current_user.ability.weapon.attack
 		gon.userDefense = current_user.ability.shield.defense
@@ -21,10 +23,12 @@ class MonstersController < ApplicationController
 	end
 
 	def coinget
-		@monster = Monster.find(params[:monster_id])
+		@monster = Villain.find(params[:monster_id])
 		@coin = Coin.find_by(user_id:current_user.id)
 		@coin.coin += @monster.coin
 		@coin.save
+		# binding.pry
+		VillainUser.create(user_id:params[:user_id],villain_id:params[:monster_id])
 		redirect_to user_path(current_user.id)
 	end
 end

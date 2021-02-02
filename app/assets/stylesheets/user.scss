@@ -61,6 +61,7 @@
 }
 
 .monster-img-name{
+	position:relative;
 	display:flex;
 	justify-content: top;
 	align-items:center;
@@ -71,6 +72,18 @@
 	color:rgb(31, 1, 1);
 	font-size:20px;
 	font-weight: bold;
+}
+
+.win{
+position: absolute;
+width: 200%;
+bottom:80%;
+text-align: center;
+background-color: crimson;
+color:white;
+transform: skewY(-10deg);
+padding:0 20px;
+font-size:30px;
 }
 
 
@@ -85,7 +98,8 @@
 	border-radius: 5px;
 	bottom: 32px;
   right: 32px;
-  position: fixed;
+	position: fixed;
+	z-index: 10;
 }
 
 .status{

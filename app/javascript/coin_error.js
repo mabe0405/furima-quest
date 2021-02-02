@@ -1,3 +1,5 @@
+if(document.URL.match(/purchases/)){
+
 const errorMessageCoinOver = function(){
 	const coinInput = document.getElementById("coin");
 	const coinMessage = document.getElementById("coin-message");
@@ -30,3 +32,4 @@ const errorMessagePriceOver = function(){
 
 
 setInterval(errorMessageCoinOver,100)
+}

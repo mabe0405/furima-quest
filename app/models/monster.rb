@@ -1,8 +1,8 @@
 class Monster < ActiveHash::Base
 	self.data = [
-    { id: 1, name: 'スライム', hp: 5,mp: 2,attack: 2,defense: 2,speed: 1,gem: 10,coin: 10,image: "/assets/m1_suraimu.png"},
+    { id: 1, name: 'スライム', hp: 3,mp: 2,attack: 2,defense: 2,speed: 100,gem: 10,coin: 10,image: "/assets/m1_suraimu.png"},
     { id: 2, name: 'スライムベス', hp: 11,mp: 5,attack: 12,defense: 2,speed: 1,gem: 10,coin: 20,image: "/assets/m2_suraimubesu.png" },
-    { id: 3, name: 'ドラキー', hp: 70,mp: 20,attack: 32,defense: 2,speed: 1,gem: 10,coin: 30,image: "/assets/m3_doraki-.png" },
+    { id: 3, name: 'ドラキー', hp: 70,mp: 20,attack: 32,defense: 2,speed: 100,gem: 10,coin: 30,image: "/assets/m3_doraki-.png" },
     { id: 4, name: 'ゴースト', hp: 5,mp: 2,attack: 2,defense: 2,speed: 1,gem: 10,coin: 40,image: "/assets/m4_gosuto.png"},
     { id: 5, name: 'まほうつかい', hp: 30,mp: 5,attack: 12,defense: 2,speed: 1,gem: 10,coin: 50,image: "/assets/m5_mahoutukai.png" },
     { id: 6, name: 'メイジドラキー', hp: 70,mp: 20,attack: 32,defense: 2,speed: 1,gem: 10,coin: 60,image: "/assets/m6_meijidoraki-.png" },
@@ -15,5 +15,8 @@ class Monster < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
+
+  has_many :monster_users 
+  has_many :users ,through: :monster_users
 
 end

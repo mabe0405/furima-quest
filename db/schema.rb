@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_101400) do
+ActiveRecord::Schema.define(version: 2021_02_02_100129) do
 
   create_table "abilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "hp", null: false
@@ -89,6 +89,14 @@ ActiveRecord::Schema.define(version: 2021_01_14_101400) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "monster_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "monster_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_monster_users_on_user_id"
+  end
+
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_id", null: false
@@ -133,14 +141,38 @@ ActiveRecord::Schema.define(version: 2021_01_14_101400) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "villain_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "villain_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_villain_users_on_user_id"
+    t.index ["villain_id"], name: "index_villain_users_on_villain_id"
+  end
+
+  create_table "villains", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "hp", null: false
+    t.integer "mp", null: false
+    t.integer "attack", null: false
+    t.integer "defense", null: false
+    t.integer "speed", null: false
+    t.integer "gem", null: false
+    t.integer "coin", null: false
+    t.string "image", null: false
+  end
+
   add_foreign_key "abilities", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "purchases"
   add_foreign_key "coins", "users"
   add_foreign_key "fgems", "users"
   add_foreign_key "items", "users"
+  add_foreign_key "monster_users", "users"
   add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
   add_foreign_key "skill_users", "skills"
   add_foreign_key "skill_users", "users"
+  add_foreign_key "villain_users", "users"
+  add_foreign_key "villain_users", "villains"
 end
