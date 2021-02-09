@@ -75,3 +75,5 @@ gem 'payjp'
 gem 'gon'
 
 gem 'jquery-rails'
+
+gem "aws-sdk-s3", require: false

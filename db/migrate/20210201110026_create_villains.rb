@@ -9,7 +9,7 @@ class CreateVillains < ActiveRecord::Migration[6.0]
       t.integer :speed,           null: false
       t.integer :gem,             null: false
       t.integer :coin,            null: false
-      t.string :image,           null: false
+      t.binary :image,           null: false
     end
   end
 end

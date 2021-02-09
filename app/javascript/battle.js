@@ -405,8 +405,8 @@ const userAttacked =function(){
 	userDamageCalc()
 	me.innerHTML = `${userName}に${userDamage}のダメージ！`
 	userHp -= userDamage
-	hp.innerHTML = `HP:${userHp}`
 	if (userHp > 0){
+		hp.innerHTML = `HP:${userHp}`
 		if (userOrder == 0){
 			setTimeout(commandSelect	, 1000)
 		} else if (userOrder == 1){
@@ -429,6 +429,7 @@ const userAttacked =function(){
 		}
 		}
 	}else{
+		hp.innerHTML = `HP:0`
 		bgmBattle.pause()
 		bgmGameOver.play()
 		me.innerHTML = `${userName}に${userDamage}のダメージ！<br>あなたはやられてしまいました。`
