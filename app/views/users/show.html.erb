@@ -18,7 +18,7 @@
 <div class="quest-index">クエスト一覧</div>
 	<div class="quests">
 		<% @monsters.each do |monster|%>
-			<%unless monster.users.present?%>
+			<%unless monster.users.include?(current_user)%>
 			<%= link_to user_monster_path(current_user.id, monster_id:monster.id) do%> 
 					<div class="quest">
 						<div class="monster-img-name">	
